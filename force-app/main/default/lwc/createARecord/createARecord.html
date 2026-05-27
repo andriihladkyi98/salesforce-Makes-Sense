@@ -1,0 +1,17 @@
+<template>
+    <lightning-card title="Create a Record without Apex">
+        <template lwc:if={isAppBuilder}>
+            <div class="slds-p-around_medium">
+                Case creation form preview
+            </div>
+        </template>
+        <template lwc:else>
+            <lightning-record-form
+                object-api-name={caseObject}
+                mode="edit"
+                fields={fields}
+            >
+            </lightning-record-form>
+        </template>
+    </lightning-card>
+</template>

@@ -1,0 +1,12 @@
+<template>
+  <lightning-card title="Component Composition">
+
+      <div class="slds-p-around_small slds-m-around_small slds-box">
+       
+        <c-container-component products-found=true product-list={productList} ></c-container-component>
+      </div>
+
+      <lightning-button  label="Call Child" title="Call Child" onclick={callChildMethod}></lightning-button>
+    
+  </lightning-card>
+</template>

@@ -1,0 +1,43 @@
+{
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/.sf": true,
+    "**/.sfdx": true
+  },
+  "xml.preferences.showSchemaDocumentationType": "none",
+  "salesforce.einsteinForDevelopers.enableAutocompletions": false,
+  "salesforce.einsteinForDevelopers.enable": true,
+  "salesforce.einsteinForDevelopers.enableAutocompletionsByFileType": {
+    "apex": true,
+    "javascript": false,
+    "css": true,
+    "html": true
+  },
+  "cSpell.words": [
+    "Abbottchester",
+    "Andrii",
+    "Ariane",
+    "Coolray",
+    "Eswatini",
+    "HASPERMISSION",
+    "Hladkyi",
+    "Homenick",
+    "Macbook",
+    "Marilou",
+    "MYLOGO",
+    "onsendroductselected",
+    "Osinski",
+    "PERMISSIONSETNAME",
+    "Ryanbury",
+    "Sadova",
+    "Schamberger",
+    "sendroductselected",
+    "SHOWINPROD",
+    "Sokyriani",
+    "svgvect",
+    "SVGVECTOR",
+    "Ucujbat",
+    "Voghera"
+  ]
+}

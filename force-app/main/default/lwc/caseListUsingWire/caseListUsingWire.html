@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Oldest 20 Cases">
+        <ul class="slds-list_vertical slds-p-around_medium">
+            <template for:each={caseList} for:item="caseRecord">
+                <li key={caseRecord.Id} class="slds-box slds-theme_shade slds-m-bottom_small">
+                    <b>{caseRecord.Subject}</b> - {caseRecord.Reason} - {caseRecord.Priority}    
+                </li>
+            </template>
+        </ul>
+
+        <template if:true={errorMessage}>
+            <div class="slds-p-around_medium slds-text-color_error">
+                Error Loading cases: {errorMessage}
+            </div>
+        </template>
+
+    </lightning-card>
+    
+</template>

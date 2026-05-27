@@ -1,0 +1,73 @@
+<template>
+  <lightning-card title="Record Form with Custom Layout to Edit">
+    <lightning-record-edit-form
+    record-id={recordId}
+    object-api-name={objectApiName}
+    onsuccess={handleFormSuccess}
+    >
+
+      <lightning-messages></lightning-messages>
+
+      <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-2">
+          
+        <lightning-input-field field-name="CaseNumber"></lightning-input-field>
+
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+          <lightning-input-field field-name="Origin"></lightning-input-field>  
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+          
+        <lightning-input-field field-name="Reason"></lightning-input-field>  
+        
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+          
+          <lightning-input-field field-name="Status"></lightning-input-field>
+          
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+
+          <lightning-input-field field-name="Subject"></lightning-input-field>
+
+        </div>
+
+        <div class="slds-col slds-size_1-of-2">
+        
+          <lightning-input-field field-name="Type"></lightning-input-field>
+          
+        </div>
+        
+        <div class="slds-col slds-size_2-of-2">
+        
+          <lightning-input-field field-name="SLAViolation__c" required></lightning-input-field>
+          
+        </div>
+
+        <div class="slds-col slds-size_1-of-1">
+          <div class="slds-grid slds-grid_align-center slds-m-top_medium">
+            <div class="slds-m-right_small">
+              <lightning-button variant="outline" label="Reset" type="reset"></lightning-button>
+            </div>
+            <div>
+              <lightning-button variant="brand" label="Save" type="submit"></lightning-button>
+            </div>
+          </div>
+        </div>
+        
+
+        
+      </div>
+
+      
+    </lightning-record-edit-form>
+    
+
+  </lightning-card>
+    
+</template>
