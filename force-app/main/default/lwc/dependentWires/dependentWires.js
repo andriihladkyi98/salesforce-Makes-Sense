@@ -1,6 +1,7 @@
 import { LightningElement, wire, api } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
 import ACCOUNT_NAME from '@salesforce/schema/Account.Name'
+import getTasksByAccountName from '@salesforce/apex/DependentWireController.fetchTasksForAccount'
 
 export default class DependentWires extends LightningElement {
 
@@ -22,5 +23,18 @@ export default class DependentWires extends LightningElement {
         } 
 
     }
+
+    @wire(getTasksByAccountName, {accountName: '$accountName'})
+    wiredTasks({data, error}) {
+        if(data){
+            // console.log('Task Data: ' + JSON.stringify(data));
+            this.taskList = data;
+            this.taskFound = true;
+        }
+        else if(error){
+            console.log(error.body.message);
+        }
+    }
+
 
 }
