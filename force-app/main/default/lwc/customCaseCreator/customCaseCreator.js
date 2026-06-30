@@ -1,12 +1,14 @@
 import { LightningElement, wire } from 'lwc';
+import {NavigationMixin} from 'lightning/navigation';
 import { createRecord } from 'lightning/uiRecordApi';
 import {getObjectInfo} from 'lightning/uiObjectInfoApi'
 import CASE_OBJ from '@salesforce/schema/Case';
 import SUBJECT from '@salesforce/schema/Case.Subject';
 import PRIORITY from '@salesforce/schema/Case.Priority';
 import DESCRIPTION from '@salesforce/schema/Case.Description';
+import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
-export default class CustomCaseCreator extends LightningElement {
+export default class CustomCaseCreator extends NavigationMixin(LightningElement) {
 
     subject = '';
     priority = '';
@@ -31,9 +33,9 @@ export default class CustomCaseCreator extends LightningElement {
     
     get options() {
         return [
-            { label: 'Low', value: 'low'},
-            { label: 'Medium', value: 'medium'},
-            { label: 'High', value: 'high'},
+            { label: 'Low', value: 'Low'},
+            { label: 'Medium', value: 'Medium'},
+            { label: 'High', value: 'High'},
         ];
     }
 
@@ -61,14 +63,12 @@ export default class CustomCaseCreator extends LightningElement {
         fields[SUBJECT.fieldApiName] = this.subject;
         fields[PRIORITY.fieldApiName] = this.priority;
         fields[DESCRIPTION.fieldApiName] = this.description;
-        if (this.recordTypeId) {
-            fields.RecordTypeId = this.recordTypeId;
-        }
 
         let recordInput = {apiName: CASE_OBJ.objectApiName, fields}; 
         await createRecord(recordInput)
         .then((record) => {
-            alert('Your case has been successfully submitted' + record.id);
+            this.showToast('Success', 'Your record has been successfully created! ', 'success', 'sticky');
+            this.navigateToRecord(record.id);
         })  
         .catch(error => {
             alert('Sorry, something went wrong' + error.body.message);
@@ -77,6 +77,27 @@ export default class CustomCaseCreator extends LightningElement {
         
 
     }
+
+    navigateToRecord(recordId) {
+        this[NavigationMixin.Navigate]({
+            type: 'standard__recordPage',
+            attributes: {
+                recordId: recordId,
+                objectApiName: 'Case',
+                actionName: 'view'
+            }
+        })
+    }
+
+    showToast(title, message, variant, mode) {
+            const event = new ShowToastEvent({
+                title: title,
+                message: message,
+                variant: variant,
+                mode: mode
+            });
+            this.dispatchEvent(event);
+        }
 
 
 }

@@ -24,6 +24,8 @@ export default class DependentWires extends LightningElement {
 
     }
 
+    
+
     @wire(getTasksByAccountName, {accountName: '$accountName'})
     wiredTasks({data, error}) {
         if(data){
